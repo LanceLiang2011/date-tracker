@@ -51,8 +51,8 @@ export default function Calendar({ events, setOpen }: Props) {
       <Alert severity="info">
         <AlertTitle>Beta</AlertTitle>
         <span>
-          Migrainedata.app is currently in beta; more is coming about reports
-          for your migraines.
+          Chronic Pain tracker is currently in beta; more is coming about
+          reports for your migraines.
         </span>
       </Alert>
     </Grid>

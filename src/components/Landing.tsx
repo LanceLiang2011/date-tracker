@@ -39,10 +39,10 @@ export default function Landing() {
       alignItems="center"
     >
       <Grid item>
-        <h1>Track your migraines, help doctors find a cure</h1>
+        <h1>Track your Chronic Pain, help doctors improve your life</h1>
         <p style={{ maxWidth: "800px", lineHeight: "1.45" }}>
-          Our app helps you track your migraine events, and provides a unique
-          opportunity for you to help doctors cure migraines.
+          Our app helps you track your chronic pain events, and provides a
+          unique opportunity for you to help doctors improve your life quality.
         </p>
       </Grid>
       <Grid
@@ -66,7 +66,12 @@ export default function Landing() {
             </Button>
           </div>
         )}
-        {success && <Alert severity="info">Please check your mailbox.</Alert>}
+        {success && (
+          <Alert severity="info">
+            Sorry I shut down the Supabase server for now. Sorry for the
+            inconvenience
+          </Alert>
+        )}
       </Grid>
       <Grid item>
         <Image
