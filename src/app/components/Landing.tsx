@@ -40,7 +40,7 @@ export default function Landing() {
           src={doctor}
           alt="doctor"
           style={{
-            maxWidth: "500px",
+            maxWidth: "600px",
             width: "100%",
             height: "auto",
             margin: "auto",
