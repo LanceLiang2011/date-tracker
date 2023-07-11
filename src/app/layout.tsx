@@ -1,6 +1,12 @@
+"use client";
+
 import "./globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { useState } from "react";
+import { lightTheme, darkTheme } from "./theme/theme";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +20,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isDark, setIsDark] = useState(false);
+  function switchTheme(): void {
+    setIsDark((cur) => !cur);
+  }
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <LocalizationProvider>
+          <CssBaseline />
+          <body className={inter.className}>{children}</body>
+        </LocalizationProvider>
+      </ThemeProvider>
     </html>
   );
 }
