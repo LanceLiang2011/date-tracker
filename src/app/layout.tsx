@@ -1,28 +1,35 @@
+"use client";
+
 import "./globals.scss";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Header from "./components/Header";
-import MuiThemeProvider, { MuiThemeContext } from "./theme/MuiThemeProvider";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Date tracker App",
-  description:
-    "A practise of using MUI and Supabase in New Next.js app route by Lance",
-};
+import React, { useState } from "react";
+import { lightTheme, darkTheme } from "./theme/theme";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { AuthContextProvider } from "./context";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [isDark, setIsDark] = useState(false);
+  const switchTheme: any = () => {
+    setIsDark(!isDark);
+  };
+
   return (
     <html lang="en">
-      <MuiThemeProvider>
-        <Header />
-        {children}
-      </MuiThemeProvider>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <CssBaseline />
+          <body>
+            <AuthContextProvider switchTheme={switchTheme}>
+              {children}
+            </AuthContextProvider>
+          </body>
+        </LocalizationProvider>
+      </ThemeProvider>
     </html>
   );
 }
